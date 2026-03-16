@@ -77,7 +77,7 @@ def deserialize(language: str, binding: dict) -> dict:
 
     if "query" in binding:
         for name, query in binding["query"].items():
-            result[name] = Query(TS_LANGUAGES[language], query)
+            result[name] = TS_LANGUAGES[language].query(query)
 
     if "field_name" in binding:
         for name, field in binding["field_name"].items():
@@ -113,7 +113,8 @@ BINDINGS: dict[str, QueryBinding] = {
                     "function_call_name": """
                     (invocation_expression
                         function: [
-                            (member_access_expression) @function-call
+                            (member_access_expression
+                                name: (identifier) @function-call)
                             (identifier) @function-call
                         ])
                     """,
@@ -190,7 +191,8 @@ BINDINGS: dict[str, QueryBinding] = {
                     """,
                     # obj.CONSTANT
                     "imported_constant_name": """
-                    (attribute) @constant
+                    (attribute
+                        attribute: (identifier) @constant)
                     """,
                     "string_literal": """
                     (string) @string-literal
