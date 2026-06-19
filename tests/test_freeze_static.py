@@ -15,6 +15,8 @@
 import textwrap
 from pathlib import Path
 
+import fixtures
+
 import capa.main
 import capa.rules
 import capa.features.file
