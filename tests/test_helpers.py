@@ -149,6 +149,9 @@ def test_extensions_dot_prefix():
         for ext in ext_group:
             assert ext.startswith("."), f"extension {ext!r} must start with a dot"
 
+    for ext in EXTENSIONS_SUPPORTED_SCRIPTS:
+        assert not ext.startswith("."), f"script suffix {ext!r} should be a bare suffix"
+
     assert Path("sample.log").name.endswith(EXTENSIONS_DYNAMIC)
     assert not Path("dialog").name.endswith(EXTENSIONS_DYNAMIC)
     assert not Path("catalog").name.endswith(EXTENSIONS_DYNAMIC)
