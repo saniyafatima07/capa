@@ -27,7 +27,6 @@ import capa.features.address
 import capa.features.basicblock
 import capa.features.extractors.null
 import capa.features.freeze.features
-from tests import fixtures
 from capa.features.address import Address, AbsoluteVirtualAddress, FileOffsetRangeAddress
 from capa.features.extractors.base_extractor import (
     BBHandle,
